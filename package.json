@@ -1,0 +1,23 @@
+{
+  "name": "gitgaiden",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YogliB-x-OpenClaw/gitgaiden.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/YogliB-x-OpenClaw/gitgaiden/issues"
+  },
+  "homepage": "https://github.com/YogliB-x-OpenClaw/gitgaiden#readme"
+}
