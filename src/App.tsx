@@ -10,8 +10,31 @@ function App() {
 
   const handleRepoSelect = async (repo: Repo) => {
     setSelectedRepo(repo)
-    // TODO: Fetch commits from GitHub API
     setCommits([])
+
+    try {
+      const response = await fetch(
+        `https://api.github.com/repos/${repo.full_name}/commits?per_page=10`
+      )
+      if (!response.ok) {
+        throw new Error('Failed to fetch commits')
+      }
+      const data = await response.json()
+      
+      const commitsData: Commit[] = data.map((commit: any) => ({
+        sha: commit.sha,
+        message: commit.commit.message,
+        author: {
+          name: commit.commit.author.name,
+          date: commit.commit.author.date
+        }
+      }))
+      
+      setCommits(commitsData)
+    } catch (error) {
+      console.error('Error fetching commits:', error)
+      setCommits([])
+    }
   }
 
   const handleBack = () => {
