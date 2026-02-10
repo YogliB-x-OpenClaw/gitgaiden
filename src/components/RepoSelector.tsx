@@ -75,25 +75,25 @@ export function RepoSelector({ onSelect }: RepoSelectorProps) {
           <Card
             key={repo.id}
             className={cn(
-              "bg-gray-800/50 border-gray-700 hover:border-purple-500 hover:bg-gray-800/80 transition-all cursor-pointer"
+              "bg-gray-800/50 border-gray-700 hover:border-purple-500 hover:bg-gray-800/80 transition-all cursor-pointer min-h-[120px]"
             )}
             onClick={() => onSelect(repo)}
           >
-            <CardContent className="p-6">
-              <div className="flex items-center gap-4">
-                <span className="text-2xl font-bold text-purple-400 w-8">
+            <CardContent className="p-6 h-full">
+              <div className="flex items-center gap-4 h-full">
+                <span className="text-2xl font-bold text-purple-400 w-8 flex-shrink-0">
                   {index + 1}
                 </span>
-                <div className="flex-1">
-                  <h3 className="text-lg font-semibold hover:text-purple-300 transition-colors">
+                <div className="flex-1 min-w-0">
+                  <h3 className="text-lg font-semibold text-[#c9d1d9] hover:text-purple-300 transition-colors truncate">
                     {repo.full_name}
                   </h3>
                   <p className="text-gray-400 text-sm line-clamp-2 mt-1">
                     {repo.description || 'No description'}
                   </p>
                 </div>
-                <div className="text-right">
-                  <span className="text-yellow-400">⭐ {repo.stargazers_count.toLocaleString()}</span>
+                <div className="text-right flex-shrink-0">
+                  <span className="text-yellow-400 font-mono">⭐ {repo.stargazers_count.toLocaleString()}</span>
                 </div>
               </div>
             </CardContent>
