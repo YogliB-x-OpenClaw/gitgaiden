@@ -88,7 +88,7 @@ export function GameScreen({ repo, commits, currentIndex, onBack, onPrevious, on
             </div>
 
             {/* Commit Message Panel */}
-            <div className="space-y-2">
+            <div className="space-y-2 animate-fade-in">
               <h3 className="text-sm font-bold text-[#a371f7] font-mono uppercase tracking-wider">
                 {'>'} Commit Message
               </h3>
@@ -103,16 +103,16 @@ export function GameScreen({ repo, commits, currentIndex, onBack, onPrevious, on
             </div>
 
             {/* Navigation Buttons */}
-            <div className="flex gap-4">
+            <div className="flex gap-4 flex-col sm:flex-row">
               <Button
                 onClick={onPrevious}
                 disabled={currentIndex === 0}
                 variant={currentIndex === 0 ? "outline" : "default"}
                 className={cn(
-                  "flex-1 py-3 font-mono text-sm font-bold",
+                  "flex-1 py-4 sm:py-3 font-mono text-sm font-bold transition-all duration-200",
                   currentIndex === 0
                     ? "border-[rgba(255,255,255,0.1)] text-[rgba(201,209,217,0.3)] cursor-not-allowed bg-transparent"
-                    : "border-[#a371f7] text-[#c9d1d9] bg-[rgba(163,113,247,0.1)] hover:bg-[rgba(163,113,247,0.2)] hover:shadow-[0_0_15px_rgba(163,113,247,0.4)]"
+                    : "border-[#a371f7] text-[#c9d1d9] bg-[rgba(163,113,247,0.1)] hover:bg-[rgba(163,113,247,0.2)] hover:shadow-[0_0_15px_rgba(163,113,247,0.4)] hover:scale-105"
                 )}
               >
                 ◄ PREVIOUS
@@ -122,10 +122,10 @@ export function GameScreen({ repo, commits, currentIndex, onBack, onPrevious, on
                 disabled={currentIndex === commits.length - 1}
                 variant={currentIndex === commits.length - 1 ? "outline" : "default"}
                 className={cn(
-                  "flex-1 py-3 font-mono text-sm font-bold",
+                  "flex-1 py-4 sm:py-3 font-mono text-sm font-bold transition-all duration-200",
                   currentIndex === commits.length - 1
                     ? "border-[rgba(255,255,255,0.1)] text-[rgba(201,209,217,0.3)] cursor-not-allowed bg-transparent"
-                    : "border-[#2ea043] text-[#c9d1d9] bg-[rgba(46,160,67,0.1)] hover:bg-[rgba(46,160,67,0.2)] hover:shadow-[0_0_15px_rgba(46,160,67,0.4)]"
+                    : "border-[#2ea043] text-[#c9d1d9] bg-[rgba(46,160,67,0.1)] hover:bg-[rgba(46,160,67,0.2)] hover:shadow-[0_0_15px_rgba(46,160,67,0.4)] hover:scale-105"
                 )}
               >
                 NEXT ►
@@ -160,6 +160,13 @@ export function GameScreen({ repo, commits, currentIndex, onBack, onPrevious, on
       <style>{`
         .text-shadow-purple {
           text-shadow: 0 0 10px rgba(163, 113, 247, 0.5);
+        }
+        @keyframes fade-in {
+          from { opacity: 0; transform: translateY(10px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+          animation: fade-in 0.5s ease-out;
         }
       `}</style>
     </div>
