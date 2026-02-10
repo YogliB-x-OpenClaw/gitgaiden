@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
 import type { Repo } from '../lib/types'
+import { Button } from '@/components/ui/button'
+import { cn } from '@/lib/utils'
 
 interface RepoSelectorProps {
   onSelect: (repo: Repo) => void
@@ -41,12 +43,13 @@ export function RepoSelector({ onSelect }: RepoSelectorProps) {
     return (
       <div className="text-center py-20">
         <p className="text-red-400">Error: {error}</p>
-        <button
+        <Button
           onClick={fetchTopRepos}
-          className="mt-4 px-4 py-2 bg-purple-600 rounded-lg hover:bg-purple-700 transition-colors"
+          variant="outline"
+          className="mt-4 border-[#a371f7] text-[#a371f7] hover:bg-[#a371f7] hover:text-white bg-transparent"
         >
           Retry
-        </button>
+        </Button>
       </div>
     )
   }
@@ -61,7 +64,10 @@ export function RepoSelector({ onSelect }: RepoSelectorProps) {
           <button
             key={repo.id}
             onClick={() => onSelect(repo)}
-            className="flex items-center gap-4 p-4 bg-gray-800/50 rounded-xl hover:bg-gray-800/80 transition-all border border-gray-700 hover:border-purple-500 text-left group"
+            className={cn(
+              "flex items-center gap-4 p-4 bg-gray-800/50 rounded-xl transition-all border group text-left",
+              "border-gray-700 hover:border-purple-500 hover:bg-gray-800/80"
+            )}
           >
             <span className="text-2xl font-bold text-purple-400 w-8">
               {index + 1}

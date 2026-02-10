@@ -85,19 +85,8 @@ function App() {
 
       {/* Scanline effect overlay */}
       <div 
-        className="fixed inset-0 pointer-events-none opacity-[0.03]"
-        style={{
-          backgroundImage: 'linear-gradient(rgba(255,255,255,1px) 1px, transparent 1px)',
-          backgroundSize: '100% 3px'
-        }}
+        className="fixed inset-0 pointer-events-none opacity-[0.03] scanline-overlay"
       />
-
-      {/* CSS for glow effects */}
-      <style>{`
-        .text-shadow-purple {
-          text-shadow: 0 0 10px rgba(163, 113, 247, 0.5);
-        }
-      `}</style>
     </div>
   )
 }
